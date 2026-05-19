@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python & Cyber Tracker 🚀</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>🐍 Python & 🔒 Cyber Tracker</h1>
+            <p>Track your coding, hacking, fitness, study & finances daily! 💪📈💰</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('today', this)">📅 Today</button>
+            <button class="tab" onclick="switchTab('quests', this)">🎯 Quests</button>
+            <button class="tab" onclick="switchTab('weekly', this)">📊 Weekly</button>
+            <button class="tab" onclick="switchTab('finance', this)">💰 Finance</button>
+        </div>
+
+        <!-- Today Tab -->
+        <div id="today" class="tab-content active">
+            <div class="grid">
+                <div class="section">
+                    <h3>🐍 Python Practice</h3>
+
+                    <div class="input-group">
+                        <label>How long did you practice Python today?</label>
+
+                        <select id="pythonTime">
+                            <option value="0">0 minutes</option>
+                            <option value="15">15 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                            <option value="60" selected>1 hour</option>
+                            <option value="90">1.5 hours</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3+ hours</option>
+                        </select>
+                    </div>
+
+                    <textarea id="pythonNotes" placeholder="What did you learn/work on?"></textarea>
+                </div>
+
+                <div class="section">
+                    <h3>🔒 Cybersecurity Practice</h3>
+
+                    <div class="input-group">
+                        <label>How long did you practice hacking today?</label>
+
+                        <select id="cyberTime">
+                            <option value="0">0 minutes</option>
+                            <option value="15">15 min</option>
+                            <option value="30">30 min</option>
+                            <option value="45">45 min</option>
+                            <option value="60" selected>1 hour</option>
+                            <option value="90">1.5 hours</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3+ hours</option>
+                        </select>
+                    </div>
+
+                    <textarea id="cyberNotes" placeholder="What did you practice?"></textarea>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="saveToday()">💾 Save Today's Progress</button>
+            </div>
+        </div>
+
+        <!-- Quests Tab -->
+        <div id="quests" class="tab-content">
+            <div class="section">
+                <h3>🎯 Daily Quests</h3>
+
+                <p style="color: #999; margin-bottom: 20px;">
+                    Tick completed quests! 🔥
+                </p>
+
+                <div id="questList"></div>
+
+                <button class="btn btn-success" onclick="resetQuests()">
+                    🔄 Reset Quests
+                </button>
+            </div>
+        </div>
+
+        <!-- Weekly Tab -->
+        <div id="weekly" class="tab-content">
+            <div class="grid">
+
+                <div class="card">
+                    <div class="progress-circle" data-percent="0" id="weekPython"></div>
+
+                    <h3>Python Hours</h3>
+
+                    <div class="stat-number" id="totalPythonWeek">0h</div>
+                </div>
+
+                <div class="card">
+                    <div class="progress-circle" data-percent="0" id="weekCyber"></div>
+
+                    <h3>Cyber Hours</h3>
+
+                    <div class="stat-number" id="totalCyberWeek">0h</div>
+                </div>
+
+                <div class="card">
+                    <div class="progress-circle" data-percent="0" id="weekQuests"></div>
+
+                    <h3>Quests Completed</h3>
+
+                    <div class="stat-number" id="totalQuestsWeek">0/35</div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn" onclick="loadPreviousWeek()">⬅️ Previous</button>
+
+                <button class="btn" onclick="loadCurrentWeek()">📅 This Week</button>
+
+                <button class="btn" onclick="loadNextWeek()">Next ➡️</button>
+            </div>
+        </div>
+
+        <!-- Finance Tab -->
+        <div id="finance" class="tab-content">
+
+            <div class="section">
+
+                <h3>💰 Today's Expenses</h3>
+
+                <div class="input-group">
+                    <label>Amount spent (₹)</label>
+
+                    <input type="number" id="expenseAmount" placeholder="0">
+                </div>
+
+                <div class="input-group">
+                    <label>Category</label>
+
+                    <select id="expenseCategory">
+                        <option value="food">🍔 Food</option>
+                        <option value="transport">🚗 Transport</option>
+                        <option value="entertainment">🎮 Entertainment</option>
+                        <option value="shopping">🛒 Shopping</option>
+                        <option value="study">📚 Study Materials</option>
+                        <option value="other">📋 Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Notes</label>
+
+                    <input type="text" id="expenseNotes" placeholder="Notes">
+                </div>
+
+                <button class="btn" onclick="addExpense()">➕ Add Expense</button>
+
+            </div>
+
+            <div id="expenseList"></div>
+
+            <div style="margin-top: 30px;">
+                <h3 style="color: #ff6b6b;">
+                    📊 Today's Total: ₹<span id="dailyTotal">0</span>
+                </h3>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
