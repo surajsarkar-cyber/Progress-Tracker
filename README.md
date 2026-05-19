@@ -20,6 +20,7 @@ A simple web-based progress tracking system to track tasks, goals, or learning p
 ---
 
 ## 📸 Screenshots
+![Progress Tracker](screenshots/home.png)
 
 
 ---
